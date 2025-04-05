@@ -27,7 +27,7 @@ fun drawWiringView() {
             drawing.setColor(obstacle.colorR, obstacle.colorG, obstacle.colorB)
         }
     }
-
+    // TODO: add an indicator for groupid signals
     for (signal in Tankhenics.signals) {
         when (signal) {
             is SignalDirect -> {
