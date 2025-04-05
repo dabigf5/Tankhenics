@@ -2,7 +2,6 @@ package tools.important.tankhenics
 
 import tanks.Drawing
 import tanks.Game
-import tools.important.tankhenics.machine.Machine
 import tools.important.tankhenics.util.fillArrow
 import tools.important.tankhenics.util.gridToGame
 
@@ -10,23 +9,20 @@ fun drawWiringView() {
     val drawing = Drawing.drawing!!
     val grid = Tankhenics.grid!!
 
-    drawing.setFontSize(10.0)
     for (y in 0..<grid.height) {
         for (x in 0..<grid.width) {
-            val obstacle = grid.get(x, y)
-
-            drawing.setColor(100.0, 100.0, 100.0, 75.0)
             val gameX = x.gridToGame()
             val gameY = y.gridToGame()
+
+            drawing.setColor(100.0, 100.0, 130.0, 75.0)
             drawing.fillRect(gameX, gameY, Game.tile_size, Game.tile_size)
+
+            drawing.setColor(100.0, 100.0, 150.0, 75.0)
             drawing.drawRect(gameX, gameY, Game.tile_size, Game.tile_size)
-
-            if (obstacle == null) continue
-            if (obstacle !is Machine) continue
-
-            drawing.setColor(obstacle.colorR, obstacle.colorG, obstacle.colorB)
         }
     }
+
+
     // TODO: add an indicator for groupid signals
     for (signal in Tankhenics.signals) {
         when (signal) {
