@@ -1,3 +1,4 @@
+![Tankhenics Logo](tankhenicslogo.png)
 # Tankhenics
 An extension for Tanks: The Crusades which adds logical obstacles similar to redstone from minecraft.
 
