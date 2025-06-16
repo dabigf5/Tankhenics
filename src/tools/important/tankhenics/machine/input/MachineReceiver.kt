@@ -4,9 +4,9 @@ import tanks.obstacle.ObstacleTeleporter
 import tools.important.tankhenics.SignalGroup
 import tools.important.tankhenics.machine.Machine
 
-class MachineReciever(name: String?, posX: Double, posY: Double) : Machine(name, posX, posY) {
+class MachineReceiver(name: String?, posX: Double, posY: Double) : Machine(name, posX, posY) {
     init {
-        description = "A reciever that will output direct signals when powered by the game GroupID"
+        description = "A reciever that will output direct signals when a Transmitter with the same GroupID is activated"
         enableGroupID = true
         val (r, g, b) = ObstacleTeleporter.getColorFromID(groupID)
         setColor(r, g, b)

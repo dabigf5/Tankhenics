@@ -9,7 +9,7 @@ import tanks.gui.screen.Screen
 import tanks.gui.screen.ScreenGame
 import tanks.gui.screen.ScreenPartyLobby
 import tools.important.tankhenics.machine.Machine
-import tools.important.tankhenics.machine.input.MachineReciever
+import tools.important.tankhenics.machine.input.MachineReceiver
 import tools.important.tankhenics.machine.input.MachineSwitch
 import tools.important.tankhenics.machine.logic.MachineAndGate
 import tools.important.tankhenics.machine.logic.MachineNotGate
@@ -83,7 +83,7 @@ class TankhenicsExtension : Extension("Tankhenics") {
 
         // input //
         Game.registerObstacle(MachineSwitch::class.java, "tk_switch")
-        Game.registerObstacle(MachineReciever::class.java, "tk_reciever")
+        Game.registerObstacle(MachineReceiver::class.java, "tk_reciever")
         // output //
         Game.registerObstacle(MachineLamp::class.java, "tk_lamp")
         Game.registerObstacle(MachineShooter::class.java, "tk_shooter")

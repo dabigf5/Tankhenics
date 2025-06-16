@@ -6,7 +6,7 @@ import tools.important.tankhenics.machine.Machine
 
 class MachineTransmitter(name: String?, posX: Double, posY: Double) : Machine(name, posX, posY) {
     init {
-        description = "A transmitter that will send signals to recievers with the same Group ID"
+        description = "A transmitter that will activate Receivers with the same Group ID"
         enableGroupID = true
         val (r, g, b) = ObstacleTeleporter.getColorFromID(groupID)
         setColor(r/2, g/2, b/2)
