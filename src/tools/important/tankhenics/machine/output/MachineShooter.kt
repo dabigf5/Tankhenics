@@ -2,7 +2,7 @@ package tools.important.tankhenics.machine.output
 
 import tanks.Game
 import tanks.bullet.Bullet
-import tanks.tank.TankPlayer
+import tanks.bullet.DefaultItems
 import tools.important.tankhenics.machine.Machine
 
 class MachineShooter(name: String?, posX: Double, posY: Double) : Machine(name, posX, posY) {
@@ -24,15 +24,16 @@ class MachineShooter(name: String?, posX: Double, posY: Double) : Machine(name, 
         if (fired) return
         fired = true
         for (direction in poweredDirections) {
+            @Suppress("UsePropertyAccessSyntax") // It wants to replace .getCopy() with .copy
             val bullet = Bullet(
                 posX + direction.xOffset * Game.tile_size,
                 posY + direction.yOffset * Game.tile_size,
-                0,
                 Game.dummyTank,
-                TankPlayer.default_bullet
+                false,
+                DefaultItems.basic_bullet.getCopy().bullet.item
             )
-            bullet.vX = direction.xOffset * bullet.item.speed
-            bullet.vY = direction.yOffset * bullet.item.speed
+            bullet.vX = direction.xOffset * bullet.speed
+            bullet.vY = direction.yOffset * bullet.speed
             Game.movables.add(bullet)
             //Game.eventsOut.add(EventShootBullet(bullet))
         }

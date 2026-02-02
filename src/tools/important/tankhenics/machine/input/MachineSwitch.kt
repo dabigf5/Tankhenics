@@ -3,8 +3,6 @@ package tools.important.tankhenics.machine.input
 import tanks.Movable
 import tanks.bullet.Bullet
 import tanks.bullet.BulletGas
-import tanks.bullet.legacy.BulletAir
-import tanks.bullet.legacy.BulletFlame
 import tools.important.tankhenics.machine.Machine
 import tools.important.tankhenics.util.redraw
 
@@ -20,9 +18,7 @@ class MachineSwitch(name: String?, posX: Double, posY: Double) : Machine(name, p
 
     override fun onObjectEntry(m: Movable) {
         if (m is Bullet
-            && m !is BulletGas // just in case
-            && m !is BulletAir
-            && m !is BulletFlame
+            && m !is BulletGas
             ) switched = !switched
     }
 

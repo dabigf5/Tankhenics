@@ -50,7 +50,7 @@ object Tankhenics {
     }
 
     fun updateWiring() {
-        val grid = Tankhenics.grid ?: return
+        val grid = grid ?: return
 
         // yes, doing this every update does rip directly into the shithole of performance,
         // but any checks would be iterating through Game.obstacles anyways, because

@@ -1,12 +1,42 @@
 package tools.important.tankhenics.machine
 
+import tanks.Drawing
+import tanks.Game
 import tanks.obstacle.Obstacle
 import tools.important.tankhenics.*
 
+
 abstract class Machine(name: String?, posX: Double, posY: Double) : Obstacle(name, posX, posY) {
     init {
-        enableStacking = false
         destructible = false
+    }
+
+    override fun draw3dOutline(p0: Double, p1: Double, p2: Double, p3: Double) {
+        val drawing = Drawing.drawing
+
+        drawing.fillBox(this.posX, this.posY, this.startHeight * 50.0, 51.0, 51.0, 1.0, 0.toByte())
+    }
+
+    override fun getTileHeight(): Double {
+        return 1.0
+    }
+
+    override fun draw() {
+            val drawing = Drawing.drawing
+            drawing.setColor(this.colorR, this.colorG, this.colorB, this.colorA, this.glow)
+            if (Game.enable3d) {
+                drawing.fillBox(
+                    this,
+                    this.posX,
+                    this.posY,
+                    this.startHeight * 50.0,
+                    draw_size,
+                    draw_size,
+                    draw_size,
+                )
+            } else {
+                drawing.fillRect(this, posX, posY, draw_size, draw_size)
+            }
     }
 
     abstract fun updateWiring()
@@ -38,18 +68,13 @@ abstract class Machine(name: String?, posX: Double, posY: Double) : Obstacle(nam
         }
     }
     fun outputGroupSignal(groupId: Int) {
-        Tankhenics.newSignals.add(SignalGroup(this, groupId))
+        TODO("Group Signals")
+        // Tankhenics.newSignals.add(SignalGroup(this, groupId))
     }
 
     protected fun setColor(r: Double, g: Double, b: Double) {
         colorR = r
         colorG = g
         colorB = b
-
-        for (i in 0..<default_max_height) {
-            stackColorR[i] = r
-            stackColorG[i] = g
-            stackColorB[i] = b
-        }
     }
 }
