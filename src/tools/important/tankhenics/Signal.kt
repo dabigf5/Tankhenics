@@ -1,6 +1,8 @@
 package tools.important.tankhenics
 
+import tanks.Game
 import tanks.obstacle.Obstacle
+import tools.important.tankhenics.machine.input.MachineReceiver
 import tools.important.tankhenics.util.gridX
 import tools.important.tankhenics.util.gridY
 
@@ -59,15 +61,17 @@ class SignalDirect(
     }
 }
 
-//class SignalGroup(
-//    val source: Obstacle,
-//    val groupId: Int,
-//) : Signal {
-//    override fun getRecipients(): Set<Obstacle> {
-//        val recipients = mutableSetOf<Obstacle>()
-//        for (obstacle in Game.obstacles) {
-//            if (obstacle.enableGroupID && obstacle.groupID == groupId) recipients.add(obstacle)
-//        }
-//        return recipients
-//    }
-//}
+class SignalGroup(
+    val source: Obstacle,
+    val groupId: Int,
+) : Signal {
+    override fun getRecipients(): Set<Obstacle> {
+        val recipients = mutableSetOf<Obstacle>()
+        for (obstacle in Game.obstacles) {
+            if (obstacle is MachineReceiver && obstacle.groupID == groupId) {
+                recipients.add(obstacle)
+            }
+        }
+        return recipients
+    }
+}

@@ -17,6 +17,7 @@ class MachineTransmitter(name: String?, posX: Double, posY: Double) : Machine(na
 
     init {
         description = "A transmitter that will activate Receivers with the same Group ID"
+        primaryMetadataID = "group_id"
 
         val (r, g, b) = ObstacleTeleporter.getColorFromID(groupID)
         setColor(r/2, g/2, b/2)
@@ -33,5 +34,9 @@ class MachineTransmitter(name: String?, posX: Double, posY: Double) : Machine(na
         groupID = data.toDouble().toInt()
         val (r, g, b) = ObstacleTeleporter.getColorFromID(groupID)
         setColor(r/2, g/2, b/2)
+    }
+
+    override fun getMetadata(): String {
+        return groupID.toString()
     }
 }

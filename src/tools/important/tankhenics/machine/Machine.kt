@@ -68,8 +68,7 @@ abstract class Machine(name: String?, posX: Double, posY: Double) : Obstacle(nam
         }
     }
     fun outputGroupSignal(groupId: Int) {
-        TODO("Group Signals")
-        // Tankhenics.newSignals.add(SignalGroup(this, groupId))
+        Tankhenics.newSignals.add(SignalGroup(this, groupId))
     }
 
     protected fun setColor(r: Double, g: Double, b: Double) {
