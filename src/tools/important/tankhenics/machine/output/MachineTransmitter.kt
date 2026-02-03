@@ -6,7 +6,8 @@ import tools.important.tankhenics.SignalDirect
 import tools.important.tankhenics.machine.Machine
 
 class MachineTransmitter(name: String?, posX: Double, posY: Double) : Machine(name, posX, posY) {
-    @MetadataProperty(
+    @JvmField
+    @field:MetadataProperty(
         id = "group_id",
         name = "Group ID",
         image = "id.png",
