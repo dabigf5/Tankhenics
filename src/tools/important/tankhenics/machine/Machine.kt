@@ -11,9 +11,10 @@ abstract class Machine(name: String?, posX: Double, posY: Double) : Obstacle(nam
         destructible = false
     }
 
-    override fun draw3dOutline(p0: Double, p1: Double, p2: Double, p3: Double) {
+    override fun draw3dOutline(r: Double, g: Double, b: Double, a: Double) {
         val drawing = Drawing.drawing
 
+        drawing.setColor(r, g, b, a)
         drawing.fillBox(this.posX, this.posY, this.startHeight * 50.0, 51.0, 51.0, 1.0, 0.toByte())
     }
 

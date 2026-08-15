@@ -113,7 +113,10 @@ class TankhenicsExtension : Extension("Tankhenics") {
 
         if (!ScreenPartyLobby.isClient) {
             if (screen != Tankhenics.lastScreen) {
-                if (screen is ScreenGame) Tankhenics.loadWiring() else Tankhenics.cleanupWiring()
+                Tankhenics.cleanupWiring()
+                if (screen is ScreenGame) {
+                    Tankhenics.loadWiring()
+                }
             }
         }
 
