@@ -19,7 +19,7 @@ class MachineSwitch(name: String?, posX: Double, posY: Double) : Machine(name, p
     override fun onObjectEntry(m: Movable) {
         if (m is Bullet
             && m !is BulletGas
-            ) switched = !switched
+        ) switched = !switched
     }
 
     var switched = false

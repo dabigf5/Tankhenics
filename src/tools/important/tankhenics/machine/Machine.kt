@@ -23,21 +23,21 @@ abstract class Machine(name: String?, posX: Double, posY: Double) : Obstacle(nam
     }
 
     override fun draw() {
-            val drawing = Drawing.drawing
-            drawing.setColor(this.colorR, this.colorG, this.colorB, this.colorA, this.glow)
-            if (Game.enable3d) {
-                drawing.fillBox(
-                    this,
-                    this.posX,
-                    this.posY,
-                    this.startHeight * 50.0,
-                    draw_size,
-                    draw_size,
-                    draw_size,
-                )
-            } else {
-                drawing.fillRect(this, posX, posY, draw_size, draw_size)
-            }
+        val drawing = Drawing.drawing
+        drawing.setColor(this.colorR, this.colorG, this.colorB, this.colorA, this.glow)
+        if (Game.enable3d) {
+            drawing.fillBox(
+                this,
+                this.posX,
+                this.posY,
+                this.startHeight * 50.0,
+                draw_size,
+                draw_size,
+                draw_size,
+            )
+        } else {
+            drawing.fillRect(this, posX, posY, draw_size, draw_size)
+        }
     }
 
     abstract fun updateWiring()
@@ -49,6 +49,7 @@ abstract class Machine(name: String?, posX: Double, posY: Double) : Obstacle(nam
         }
         return recieved.toSet()
     }
+
     fun getRecievedSignalDirections(): Set<SignalDirection> {
         val poweredDirections = mutableSetOf<SignalDirection>()
 
@@ -63,11 +64,13 @@ abstract class Machine(name: String?, posX: Double, posY: Double) : Obstacle(nam
     fun outputDirectionalSignal(direction: SignalDirection) {
         Tankhenics.newSignals.add(SignalDirect(this, direction))
     }
+
     fun outputSignal() {
         for (direction in SignalDirection.entries) {
             outputDirectionalSignal(direction)
         }
     }
+
     fun outputGroupSignal(groupId: Int) {
         Tankhenics.newSignals.add(SignalGroup(this, groupId))
     }
